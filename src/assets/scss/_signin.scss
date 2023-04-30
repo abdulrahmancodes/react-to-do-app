@@ -1,3 +1,15 @@
 .sign-in-container {
-  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+
+  .facebook-login {
+    height: 40px;
+    padding: 0 20px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: none;
+  }
 }
