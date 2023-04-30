@@ -13,7 +13,10 @@ const TaskEditor = ({ toDoItem, toggleIsEdit }) => {
 
   const handleBlur = useCallback(
     (e) => {
-      if (e.relatedTarget !== submitBtnRef.current) {
+      if (
+        e.relatedTarget !== submitBtnRef.current ||
+        e.relatedTarget.classList.contains("check-icon")
+      ) {
         toggleIsEdit();
       }
     },
