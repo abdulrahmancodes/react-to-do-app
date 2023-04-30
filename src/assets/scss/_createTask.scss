@@ -30,6 +30,7 @@
       color: var(--color-white);
       text-transform: uppercase;
       border: none;
+      transition: all 0.3s ease-in-out;
 
       &:disabled {
         opacity: 0.5;

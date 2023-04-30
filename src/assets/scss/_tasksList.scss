@@ -59,6 +59,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: all 0.3s ease-in-out;
 
         &:disabled {
           opacity: 0.5;
@@ -75,9 +76,17 @@
       }
     }
 
+    .check-icon {
+      transform: scale(1.5);
+    }
+
     &__action-icons {
       display: flex;
       align-items: center;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: all 0.3s ease-in-out;
+
       svg {
         width: 16px;
         height: 16px;
@@ -87,6 +96,13 @@
           margin-left: 10px;
           font-size: 20px;
         }
+      }
+    }
+
+    &:hover {
+      .tasks-list__task__action-icons {
+        opacity: 1;
+        transform: translateX(0px);
       }
     }
   }
