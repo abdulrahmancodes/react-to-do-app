@@ -1,0 +1,12 @@
+@mixin container {
+  max-width: 1440px;
+  width: 50%;
+  margin: auto;
+  min-height: 100vh;
+  padding-top: 175px;
+}
+
+@mixin heading {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
