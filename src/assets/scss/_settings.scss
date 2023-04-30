@@ -1,0 +1,14 @@
+.settings {
+  @include container;
+
+  &__heading {
+    @include heading;
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
