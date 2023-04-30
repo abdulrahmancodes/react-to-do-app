@@ -23,7 +23,7 @@ test.startListening({
 const loadFromLocalStorage = () => {
   try {
     const todoList = localStorage.getItem("todoList");
-    return { toDo: { todoList: JSON.parse(todoList) } };
+    return { toDo: { todoList: JSON.parse(todoList) || [] } };
   } catch (error) {
     return { toDo: { todoList: [] } };
   }
