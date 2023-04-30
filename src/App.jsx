@@ -6,6 +6,7 @@ import Settings from "./pages/Settings";
 import Navbar from "./components/Navbar";
 
 import "./assets/scss/main.scss";
+import SignIn from "./pages/SignIn.jsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/sign-in" element={<SignIn />} />
       </Routes>
     </BrowserRouter>
   );
