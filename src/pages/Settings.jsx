@@ -13,7 +13,7 @@ const Settings = () => {
       <h3 className="settings__heading">Settings</h3>
 
       <div className="settings__item">
-        <p>Hide Complete TODOs</p>
+        <p>Hide Completed TODOs</p>
         <ToggleSwitch
           checked={hideCompletedToDos}
           onChange={() => dispatch(toggleHideCompletedToDos())}
