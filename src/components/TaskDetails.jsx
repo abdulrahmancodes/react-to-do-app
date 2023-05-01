@@ -26,6 +26,7 @@ const TaskDetails = ({ toDoItem, toggleIsEdit, isEditing }) => {
       })
     );
   }, [isCompleted]);
+
   return (
     <div className="tasks-list__task">
       <div className="tasks-list__task__left">
