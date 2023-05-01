@@ -6,6 +6,7 @@ export const toDoSlice = createSlice({
   name: "toDo",
   initialState: {
     todoList: [],
+    hideCompletedToDos: false,
   },
   reducers: {
     addTask: (state, action) => {
@@ -25,8 +26,12 @@ export const toDoSlice = createSlice({
         return item.id === action.payload.id ? action.payload : item;
       });
     },
+    toggleHideCompletedToDos: (state) => {
+      state.hideCompletedToDos = !state.hideCompletedToDos;
+    },
   },
 });
 
-export const { addTask, deleteTask, editTask } = toDoSlice.actions;
+export const { addTask, deleteTask, editTask, toggleHideCompletedToDos } =
+  toDoSlice.actions;
 export default toDoSlice.reducer;
