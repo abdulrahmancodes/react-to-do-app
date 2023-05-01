@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import cx from "classnames";
 
@@ -11,24 +11,39 @@ import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 
 const TaskDetails = ({ toDoItem, toggleIsEdit, isEditing }) => {
   const dispatch = useDispatch();
+  const { hideCompletedToDos } = useSelector((state) => state.toDo);
+
   const [isCompleted, setIsCompleted] = useState(toDoItem.isCompleted);
+  const [isTaskBeingDeleted, setIsTaskBeingDeleted] = useState(false);
 
   const handleTaskDeletion = useCallback(() => {
-    dispatch(deleteTask({ id: toDoItem.id }));
-  }, [toDoItem]);
+    setIsTaskBeingDeleted(true);
+    setTimeout(() => {
+      dispatch(deleteTask({ id: toDoItem.id }));
+    }, 500);
+  }, [toDoItem, dispatch]);
 
   const toggleIsCompleted = useCallback(() => {
     setIsCompleted(!isCompleted);
-    dispatch(
-      editTask({
-        ...toDoItem,
-        isCompleted: !isCompleted,
-      })
-    );
-  }, [isCompleted]);
+
+    setTimeout(() => {
+      dispatch(
+        editTask({
+          ...toDoItem,
+          isCompleted: !isCompleted,
+        })
+      );
+    }, 1000);
+  }, [isCompleted, dispatch, toDoItem]);
 
   return (
-    <div className="tasks-list__task">
+    <div
+      className={cx("tasks-list__task", {
+        "slide-out-right": isTaskBeingDeleted,
+        "slide-in-left": toDoItem.isNewlyAdded,
+        "scale-out-center": hideCompletedToDos && isCompleted,
+      })}
+    >
       <div className="tasks-list__task__left">
         <Checkbox
           isChecked={isCompleted}
