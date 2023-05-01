@@ -22,7 +22,6 @@ const SignIn = () => {
     <div className="sign-in-container">
       <ReactFacebookLogin
         appId="628144709171934"
-        autoLoad={true}
         fields="name,email,picture"
         cssClass="facebook-login"
         callback={responseFacebook}
