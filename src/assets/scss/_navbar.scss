@@ -7,8 +7,8 @@
   align-items: center;
   position: fixed;
   top: 0;
-  border-bottom: 3px solid var(--color-black);
-  background-color: var(--color-white);
+  border-bottom: 3px solid var(--color-primary);
+  background-color: var(--color-secondary);
   z-index: 10;
 
   @media (max-width: 900px) {
@@ -26,7 +26,7 @@
   &__user-details {
     display: flex;
     align-items: center;
-    background-color: var(--color-black);
+    background-color: var(--color-primary);
     padding-right: 10px;
     margin-right: 20px;
     height: 35px;
@@ -37,7 +37,7 @@
     }
 
     span {
-      color: var(--color-white);
+      color: var(--color-secondary);
       font-size: 12px;
     }
 
@@ -73,6 +73,10 @@
 
   &__logout-link {
     margin-left: 20px;
+
+    path {
+      stroke: var(--color-primary) !important;
+    }
 
     @media (max-width: 900px) {
       margin-left: 15px;

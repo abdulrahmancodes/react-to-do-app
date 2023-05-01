@@ -5,19 +5,13 @@
   margin: 0;
   padding: 0;
   font-family: Poppins, sans-serif;
-  color: var(--color-black);
+  color: var(--color-primary);
 }
 
 :root {
-  --color-primary: #4fd1c5;
-  --color-dark: #2d3748;
-  --color-light: #a0aec0;
-  --color-white: #ffffff;
-  --color-black: #000000;
-  --color-grey: #e2e8f0;
-  --color-background: #f8f9fa;
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
   --color-red: #e53e3e;
-  --color-green: #48bb78;
 
   box-sizing: border-box;
   margin: 0;
@@ -30,6 +24,13 @@ body {
   padding: 0;
   max-width: none;
   font-family: Helvetica;
+  background-color: var(--color-secondary);
+  color: var(--color-primary) !important;
+}
+
+input {
+  caret-color: #242535;
+  color: #242535;
 }
 
 a {
