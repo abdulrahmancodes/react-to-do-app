@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Homepage from "./pages/Homepage";
 import Settings from "./pages/Settings";
+import NotFound from "./pages/NotFound";
 import SignIn from "./pages/SignIn.jsx";
 import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
@@ -31,6 +32,7 @@ function App() {
           }
         />
         <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
