@@ -7,6 +7,7 @@ import toDoReducer, {
   addTask,
   deleteTask,
   editTask,
+  markAllToDosOld,
   toggleHideCompletedToDos,
 } from "./reducers/toDoSlice";
 
@@ -18,7 +19,7 @@ const saveToLocalStorage = (state, key) => {
 };
 
 todoListListener.startListening({
-  matcher: isAnyOf(addTask, deleteTask, editTask),
+  matcher: isAnyOf(addTask, deleteTask, editTask, markAllToDosOld),
   effect: (action, { getState }) => saveToLocalStorage(getState(), "todoList"),
 });
 
