@@ -11,7 +11,10 @@ const Navbar = () => {
   const user = JSON.parse(localStorage.getItem("userDetails"));
 
   const logout = useCallback(() => {
-    localStorage.clear();
+    localStorage.removeItem("hideCompletedToDos");
+    localStorage.removeItem("todoList");
+    localStorage.removeItem("userDetails");
+
     navigate("/sign-in");
   }, [navigate]);
 
