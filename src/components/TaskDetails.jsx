@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { Tooltip } from "react-tooltip";
 import cx from "classnames";
 
 import { deleteTask, editTask } from "../store/reducers/toDoSlice";
@@ -43,6 +44,9 @@ const TaskDetails = ({ toDoItem, toggleIsEdit, isEditing }) => {
         "slide-in-left": toDoItem.isNewlyAdded,
         "scale-out-center": hideCompletedToDos && isCompleted,
       })}
+      data-tooltip-id={toDoItem.id}
+      data-tooltip-content={toDoItem.task}
+      data-tooltip-place="bottom"
     >
       <div className="tasks-list__task__left">
         <Checkbox
@@ -64,6 +68,9 @@ const TaskDetails = ({ toDoItem, toggleIsEdit, isEditing }) => {
           <AiOutlineDelete onClick={handleTaskDeletion} />
         </div>
       </div>
+      {toDoItem.task.length > 67 && (
+        <Tooltip id={toDoItem.id} className="tooltip" />
+      )}
     </div>
   );
 };
