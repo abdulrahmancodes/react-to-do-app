@@ -1,5 +1,7 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
+
+import cx from "classnames";
 
 import { editTask } from "../store/reducers/toDoSlice";
 
@@ -24,6 +26,10 @@ const TaskEditor = ({ toDoItem, toggleIsEdit }) => {
   );
 
   const updateTask = useCallback(() => {
+    if (!inputValue) {
+      return;
+    }
+
     dispatch(
       editTask({
         ...toDoItem,
@@ -31,10 +37,31 @@ const TaskEditor = ({ toDoItem, toggleIsEdit }) => {
       })
     );
     toggleIsEdit();
-  }, [inputValue, toDoItem, toggleIsEdit]);
+  }, [inputValue, toDoItem, toggleIsEdit, dispatch]);
+
+  const handleKeyPress = useCallback(
+    (event) => {
+      if (event.key === "Enter") {
+        updateTask();
+      }
+    },
+    [updateTask]
+  );
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [handleKeyPress]);
 
   return (
-    <div className="tasks-list__task">
+    <div
+      className={cx("tasks-list__task", {
+        "tasks-list__task--empty": !inputValue.trim(),
+      })}
+    >
       <div className="tasks-list__task__left">
         <input
           type="text"
@@ -50,7 +77,7 @@ const TaskEditor = ({ toDoItem, toggleIsEdit }) => {
         <button
           className="submit-btn"
           ref={submitBtnRef}
-          disabled={!inputValue}
+          disabled={!inputValue.trim()}
         >
           <BsCheck2 className="check-icon" onClick={updateTask} />
         </button>
