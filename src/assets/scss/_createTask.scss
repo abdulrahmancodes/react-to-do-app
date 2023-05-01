@@ -16,25 +16,24 @@
       width: 100%;
       height: 40px;
       border: 2px solid var(--color-black);
-      margin-right: 10px;
       padding: 0px 10px;
       outline: none;
     }
 
-    button {
+    .create-task-btn {
       cursor: pointer;
       font-weight: 500;
+      width: 0;
       height: 40px;
-      padding: 0 20px;
       background-color: var(--color-black);
       color: var(--color-white);
       text-transform: uppercase;
       border: none;
       transition: all 0.3s ease-in-out;
 
-      &:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
+      &--visible {
+        width: 90px;
+        margin-left: 10px;
       }
     }
   }
