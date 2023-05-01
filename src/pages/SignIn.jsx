@@ -5,10 +5,15 @@ import ReactFacebookLogin from "react-facebook-login";
 const SignIn = () => {
   const navigate = useNavigate();
 
-  const responseFacebook = useCallback((response) => {
-    localStorage.setItem("userDetails", JSON.stringify(response));
-    navigate("/");
-  }, []);
+  const responseFacebook = useCallback(
+    (response) => {
+      if (response.status !== "unknown") {
+        localStorage.setItem("userDetails", JSON.stringify(response));
+        navigate("/");
+      }
+    },
+    [navigate]
+  );
 
   useEffect(() => {
     const user = localStorage.getItem("userDetails");
