@@ -7,7 +7,7 @@ import { GrLogout } from "react-icons/gr";
 const Navbar = () => {
   const navigate = useNavigate();
 
-  const user = localStorage.getItem("userDetails");
+  const user = JSON.parse(localStorage.getItem("userDetails"));
 
   const logout = useCallback(() => {
     localStorage.clear();
@@ -22,6 +22,10 @@ const Navbar = () => {
 
       {user && (
         <div className="navbar__links">
+          <div className="navbar__user-details">
+            <img src={user.picture.data.url} alt="" />
+            <span>{user.name}</span>
+          </div>
           <Link to="/settings" className="navbar__settings-link">
             <AiOutlineSetting className="icon" />
           </Link>
