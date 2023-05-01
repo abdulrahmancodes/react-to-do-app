@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
+import cx from "classnames";
+
 import { addTask } from "../store/reducers/toDoSlice";
 
 const CreateTask = () => {
@@ -14,6 +16,10 @@ const CreateTask = () => {
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();
+      if (!inputValue.trim()) {
+        return;
+      }
+
       dispatch(addTask({ newTask: inputValue }));
       setInputValue("");
       window.scrollTo({
@@ -22,7 +28,7 @@ const CreateTask = () => {
         behavior: "smooth",
       });
     },
-    [inputValue]
+    [inputValue, dispatch]
   );
 
   return (
@@ -37,7 +43,13 @@ const CreateTask = () => {
           onChange={handleInputChange}
           className="homepage__create-todo__input"
         />
-        <button type="submit" disabled={!inputValue}>
+        <button
+          type="submit"
+          disabled={!inputValue.trim()}
+          className={cx("create-task-btn", {
+            "create-task-btn--visible": inputValue.trim(),
+          })}
+        >
           Create
         </button>
       </form>
