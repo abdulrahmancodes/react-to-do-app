@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import cx from "classnames";
 
-import { addTask } from "../store/reducers/toDoSlice";
+import { addTask, markAllToDosOld } from "../store/reducers/toDoSlice";
 
 const CreateTask = () => {
   const dispatch = useDispatch();
@@ -27,6 +27,7 @@ const CreateTask = () => {
         top: document.body.scrollHeight,
         behavior: "smooth",
       });
+      setTimeout(() => dispatch(markAllToDosOld()), 500);
     },
     [inputValue, dispatch]
   );
