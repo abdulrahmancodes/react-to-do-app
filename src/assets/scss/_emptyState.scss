@@ -5,6 +5,10 @@
   justify-content: center;
   height: calc(100vh - 550px);
 
+  @media (max-width: 900px) {
+    height: calc(100vh - 400px);
+  }
+
   .empty-state-icon {
     font-size: 40px;
   }

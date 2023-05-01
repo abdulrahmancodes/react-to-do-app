@@ -4,6 +4,10 @@
   flex-direction: column;
   margin-bottom: 50px;
 
+  @media (max-width: 900px) {
+    margin-bottom: 30px;
+  }
+
   &__heading {
     @include heading;
   }
@@ -11,6 +15,10 @@
   &__form {
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+    }
 
     input {
       width: 100%;
@@ -29,11 +37,17 @@
       color: var(--color-white);
       text-transform: uppercase;
       border: none;
-      transition: all 0.3s ease-in-out;
+      transition: width 0.3s ease-in-out;
 
       &--visible {
         width: 90px;
         margin-left: 10px;
+
+        @media (max-width: 900px) {
+          margin-left: 0;
+          margin-top: 10px;
+          width: 100%;
+        }
       }
     }
   }

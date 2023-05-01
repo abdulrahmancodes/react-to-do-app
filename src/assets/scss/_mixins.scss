@@ -4,9 +4,19 @@
   margin: auto;
   min-height: 100vh;
   padding-top: 175px;
+
+  @media (max-width: 900px) {
+    padding: 30px;
+    width: 100%;
+    padding-top: 100px;
+  }
 }
 
 @mixin heading {
   font-size: 20px;
   margin-bottom: 10px;
+
+  @media (max-width: 900px) {
+    font-size: 16px;
+  }
 }
