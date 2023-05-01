@@ -16,7 +16,7 @@ const SignIn = () => {
     if (user) {
       navigate("/");
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="sign-in-container">
@@ -26,6 +26,7 @@ const SignIn = () => {
         cssClass="facebook-login"
         callback={responseFacebook}
         textButton="Login with Facebook"
+        isMobile={false}
       />
     </div>
   );
