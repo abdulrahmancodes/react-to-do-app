@@ -15,12 +15,20 @@
     font-size: 24px;
   }
 
-  &__settings-icon {
+  .navbar__links {
+    display: flex;
+  }
+
+  .icon {
     font-size: 24px;
     cursor: pointer;
   }
 
   &__settings-link {
     height: 20px;
+  }
+
+  &__logout-link {
+    margin-left: 20px;
   }
 }
