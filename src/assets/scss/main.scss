@@ -40,6 +40,17 @@ li {
   list-style: none;
 }
 
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  .not-found-icon {
+    font-size: 100px;
+  }
+}
+
 @import "./mixins";
 @import "./homepage";
 @import "./settings";
@@ -49,3 +60,4 @@ li {
 @import "./createTask";
 @import "./checkbox";
 @import "./signin";
+@import "./emptyState";
