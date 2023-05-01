@@ -14,6 +14,15 @@ export const toDoSlice = createSlice({
         id: uuidv4(),
         task: action.payload.newTask,
         isCompleted: false,
+        isNewlyAdded: true,
+      });
+    },
+    markAllToDosOld: (state) => {
+      state.todoList = state.todoList.map((todoItem) => {
+        return {
+          ...todoItem,
+          isNewlyAdded: false,
+        };
       });
     },
     deleteTask: (state, action) => {
@@ -32,6 +41,11 @@ export const toDoSlice = createSlice({
   },
 });
 
-export const { addTask, deleteTask, editTask, toggleHideCompletedToDos } =
-  toDoSlice.actions;
+export const {
+  addTask,
+  deleteTask,
+  editTask,
+  toggleHideCompletedToDos,
+  markAllToDosOld,
+} = toDoSlice.actions;
 export default toDoSlice.reducer;
