@@ -7,25 +7,42 @@ import toDoReducer, {
   addTask,
   deleteTask,
   editTask,
+  toggleHideCompletedToDos,
 } from "./reducers/toDoSlice";
 
-const test = createListenerMiddleware();
+const todoListListener = createListenerMiddleware();
+const toDoSettingsListener = createListenerMiddleware();
 
-const saveToLocalStorage = (state) => {
-  localStorage.setItem("todoList", JSON.stringify(state.toDo.todoList));
+const saveToLocalStorage = (state, key) => {
+  localStorage.setItem(key, JSON.stringify(state.toDo[key]));
 };
 
-test.startListening({
+todoListListener.startListening({
   matcher: isAnyOf(addTask, deleteTask, editTask),
-  effect: (action, { getState }) => saveToLocalStorage(getState()),
+  effect: (action, { getState }) => saveToLocalStorage(getState(), "todoList"),
 });
 
-const loadFromLocalStorage = () => {
+toDoSettingsListener.startListening({
+  matcher: isAnyOf(toggleHideCompletedToDos),
+  effect: (action, { getState }) =>
+    saveToLocalStorage(getState(), "hideCompletedToDos"),
+});
+
+const getToDoListFromLS = () => {
   try {
     const todoList = localStorage.getItem("todoList");
-    return { toDo: { todoList: JSON.parse(todoList) || [] } };
+    return JSON.parse(todoList) || [];
   } catch (error) {
-    return { toDo: { todoList: [] } };
+    return [];
+  }
+};
+
+const getSettingsFromLS = () => {
+  try {
+    const todoList = localStorage.getItem("hideCompletedToDos");
+    return !!JSON.parse(todoList);
+  } catch (error) {
+    return false;
   }
 };
 
@@ -34,6 +51,14 @@ export default configureStore({
     toDo: toDoReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(test.middleware),
-  preloadedState: loadFromLocalStorage(),
+    getDefaultMiddleware().concat([
+      todoListListener.middleware,
+      toDoSettingsListener.middleware,
+    ]),
+  preloadedState: {
+    toDo: {
+      todoList: getToDoListFromLS(),
+      hideCompletedToDos: getSettingsFromLS(),
+    },
+  },
 });
