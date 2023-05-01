@@ -16,6 +16,11 @@ const CreateTask = () => {
       event.preventDefault();
       dispatch(addTask({ newTask: inputValue }));
       setInputValue("");
+      window.scrollTo({
+        left: 0,
+        top: document.body.scrollHeight,
+        behavior: "smooth",
+      });
     },
     [inputValue]
   );
