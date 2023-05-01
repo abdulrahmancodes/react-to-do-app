@@ -3,6 +3,8 @@ import React, { useState, useCallback } from "react";
 import TaskEditor from "./TaskEditor";
 import TaskDetails from "./TaskDetails";
 
+import "react-tooltip/dist/react-tooltip.css";
+
 const Task = ({ toDoItem }) => {
   const [isEditing, setIsEditing] = useState(false);
 
