@@ -7,6 +7,7 @@ const SignIn = () => {
 
   const responseFacebook = useCallback((response) => {
     localStorage.setItem("userDetails", JSON.stringify(response));
+    navigate("/");
   }, []);
 
   useEffect(() => {
