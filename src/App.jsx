@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Homepage from "./pages/Homepage";
@@ -9,8 +10,6 @@ import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
 
 import "./assets/scss/main.scss";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
 
 function App() {
   const { isDarkModeEnabled } = useSelector((state) => state.toDo);
