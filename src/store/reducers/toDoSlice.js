@@ -7,6 +7,7 @@ export const toDoSlice = createSlice({
   initialState: {
     todoList: [],
     hideCompletedToDos: false,
+    isDarkModeEnabled: false,
   },
   reducers: {
     addTask: (state, action) => {
@@ -38,6 +39,9 @@ export const toDoSlice = createSlice({
     toggleHideCompletedToDos: (state) => {
       state.hideCompletedToDos = !state.hideCompletedToDos;
     },
+    toggleDarkMode: (state) => {
+      state.isDarkModeEnabled = !state.isDarkModeEnabled;
+    },
   },
 });
 
@@ -47,5 +51,6 @@ export const {
   editTask,
   toggleHideCompletedToDos,
   markAllToDosOld,
+  toggleDarkMode,
 } = toDoSlice.actions;
 export default toDoSlice.reducer;

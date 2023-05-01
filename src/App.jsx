@@ -9,8 +9,26 @@ import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
 
 import "./assets/scss/main.scss";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function App() {
+  const { isDarkModeEnabled } = useSelector((state) => state.toDo);
+
+  useEffect(() => {
+    const primaryColor = `--color-primary: ${
+      isDarkModeEnabled ? "#fff" : "#000"
+    } !important;`;
+    const secondaryColor = ` --color-secondary: ${
+      isDarkModeEnabled ? "#242535" : "#fff"
+    } !important`;
+
+    document.documentElement.setAttribute(
+      "style",
+      primaryColor + secondaryColor
+    );
+  }, [isDarkModeEnabled]);
+
   return (
     <BrowserRouter>
       <Navbar />

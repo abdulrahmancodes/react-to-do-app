@@ -13,7 +13,7 @@ const Navbar = () => {
   const logout = useCallback(() => {
     localStorage.clear();
     navigate("/sign-in");
-  }, []);
+  }, [navigate]);
 
   return (
     <nav className="navbar">

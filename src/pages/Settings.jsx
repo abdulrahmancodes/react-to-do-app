@@ -2,11 +2,16 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import ToggleSwitch from "../components/ToggleSwitch";
-import { toggleHideCompletedToDos } from "../store/reducers/toDoSlice";
+import {
+  toggleDarkMode,
+  toggleHideCompletedToDos,
+} from "../store/reducers/toDoSlice";
 
 const Settings = () => {
   const dispatch = useDispatch();
-  const { hideCompletedToDos } = useSelector((state) => state.toDo);
+  const { hideCompletedToDos, isDarkModeEnabled } = useSelector(
+    (state) => state.toDo
+  );
 
   return (
     <div className="settings">
@@ -17,6 +22,14 @@ const Settings = () => {
         <ToggleSwitch
           checked={hideCompletedToDos}
           onChange={() => dispatch(toggleHideCompletedToDos())}
+        />
+      </div>
+
+      <div className="settings__item">
+        <p>Dark Mode</p>
+        <ToggleSwitch
+          checked={isDarkModeEnabled}
+          onChange={() => dispatch(toggleDarkMode())}
         />
       </div>
     </div>
