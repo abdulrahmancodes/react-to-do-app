@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import { Tooltip } from "react-tooltip";
 import { AiOutlineSetting } from "react-icons/ai";
 import { GrLogout } from "react-icons/gr";
 
@@ -26,12 +27,27 @@ const Navbar = () => {
             <img src={user.picture.data.url} alt="" />
             <span>{user.name}</span>
           </div>
-          <Link to="/settings" className="navbar__settings-link">
+          <Link
+            to="/settings"
+            className="navbar__settings-link"
+            data-tooltip-id="settings"
+            data-tooltip-content="Settings"
+            data-tooltip-place="bottom"
+          >
             <AiOutlineSetting className="icon" />
           </Link>
-          <GrLogout className="icon navbar__logout-link" onClick={logout} />
+          <GrLogout
+            className="icon navbar__logout-link"
+            onClick={logout}
+            data-tooltip-id="logout"
+            data-tooltip-content="Logout"
+            data-tooltip-place="bottom"
+          />
         </div>
       )}
+
+      <Tooltip id="settings" className="tooltip" />
+      <Tooltip id="logout" className="tooltip" />
     </nav>
   );
 };
