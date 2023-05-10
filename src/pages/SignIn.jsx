@@ -29,7 +29,7 @@ const SignIn = () => {
         appId="628144709171934"
         fields="name,email,picture"
         cssClass="facebook-login"
-        scope="pages_manage_posts, pages_read_engagement"
+        scope="pages_manage_posts,pages_read_engagement"
         callback={responseFacebook}
         textButton="Login with Facebook"
         isMobile={false}
